@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React from 'react';
+import {useState} from 'react';
+import Color from './components/Color';
+import AddColor from './components/AddColor';
 
 function App() {
+  const [colors,setColors]= useState(["red","blue","purple"]);
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddColor colors={colors} setColors={setColors}/>
+      <div className='hi' style={{display:"flex"}}>
+      {
+        colors.map((el,i)=>{
+          return<h2  key={i}><Color color={el}/></h2>
+        })
+      }
+      </div>
     </div>
   );
 }
